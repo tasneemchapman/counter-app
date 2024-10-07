@@ -10,11 +10,15 @@ export class counterApp extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.title = "";
+    this.min;
+    this.max;
   }
 
   static get properties() {
     return {
       title: { type: String },
+      min: { type: int},
+      max: { type: int}
     };
   }
 
@@ -43,6 +47,8 @@ export class counterApp extends DDDSuper(LitElement) {
     return html`
 <div class="wrapper">
   <div>${this.title}</div>
+  <button>${this.min}</button>
+  <button>${this.max}</button>
   <slot></slot>
 </div>`;
   }
@@ -50,6 +56,11 @@ export class counterApp extends DDDSuper(LitElement) {
   /**
    * haxProperties integration via file reference
    */
+  updated(changedProperties) {
+    if(changedProperties.DDDSuper === max) {
+
+    }
+  }
   static get haxProperties() {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
